@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @book %>
+
+<div>
+  <%= link_to "Back to books", books_path %>
+
+  <% if user_signed_in? %>
+    <% if @book.user_id == current_user.id %>
+     |<%= link_to "Edit this book", edit_book_path(@book) %>
+      <%= button_to "Destroy this book", @book, method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  <% end %>
+
+</div>

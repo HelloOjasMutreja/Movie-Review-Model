@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to "Book Review", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        <% if user_signed_in? %>
+            <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link active" %></li>
+            <li><%= link_to "Log In", new_user_session_path, class: "nav-link active" %></li>
+        <% end %>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category 
+          </a>
+          <ul class="dropdown-menu  navbar-right">
+            <% Category.all.each do |category| %>
+            <li class="<%= 'active' if params[:category] == category.name %>">
+                <%= link_to category.name, books_path(category: category.name), class: "link" %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

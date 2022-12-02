@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% if @books.count == 0 %>
+
+  <h1>There are no books currently in this category.</h1>
+
+<% else %>
+  <div id="books">
+    <% @books.each do |book| %>
+      <%= render book %>
+      <p>
+        <%= link_to "Show this book", book %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
