@@ -1,7 +1,9 @@
 <div id="<%= dom_id book %>">
 
-  <%= book.file %>
-  
+  <% if book.file.attached? %> 
+    <%= image_tag(book.file) %>
+  <% else %>
+  <% end %>
   <h2>
     <strong><%= book.title %></strong>
   </h2>
@@ -54,7 +56,7 @@
 </h4>
 
   <p>
-    <strong>Description:</strong>
+    <strong>Description: </strong>
     <%= book.description %>
   </p>
 
