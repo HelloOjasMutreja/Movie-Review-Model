@@ -5,12 +5,19 @@
   <h1>There are no books currently in this category.</h1>
 
 <% else %>
-  <div id="books">
-    <% @books.each do |book| %>
-      <%= render book %>
-      <p>
-        <%= link_to "Show this book", book %>
-      </p>
-    <% end %>
+  <div class="row">
+    <div id="books">
+      <% @books.each do |book| %>
+        <div class="col-md-3">
+          <%# render book %>
+          <% if book.file.attached? %>
+            <%= link_to image_tag(book.file, class:"book"), book %>      
+          <% end %>
+          <p>
+            <%# link_to "Show this book", book %>
+          </p>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
