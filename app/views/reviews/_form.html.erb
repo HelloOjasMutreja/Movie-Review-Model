@@ -1,0 +1,22 @@
+<%= form_with(model: @reviews, :html => { :multipart => true }) do |form| %>
+    <div id="rating-form">
+        <%= form.range_field :Rating, in: 1..10 %>
+        <label>Rating</label>        
+    </div>
+
+    <div>
+        <%= form.label :comment %>
+        <%= form.text_area :comment %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+
+<script>
+    $('#rating-form').raty({
+        path: '/assets/',
+        scoreName: 'review[rating]'
+    });
+</script>
